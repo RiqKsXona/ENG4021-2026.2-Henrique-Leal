@@ -1,0 +1,45 @@
+body {
+    margin: 0px;
+    font-family: "Space Grotesk", ui-sans-serif, system-ui;
+}
+
+.header {
+    background-color: #090820;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header span {
+    margin: 0px;
+    color: white;
+    font-weight: bold;
+}
+
+.catalog {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.card {
+    border: 2px solid black;
+}
+
+.nav {
+    margin-left: auto;
+    display: flex;
+    gap: 16px;
+}
+
+.nav a {
+    color: #b9b6e0;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.nav a.active,
+.nav a:hover {
+    color: white;
+}
