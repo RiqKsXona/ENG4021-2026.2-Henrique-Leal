@@ -3,11 +3,11 @@ from django.http import JsonResponse
 import requests
 import json
 import os
+from .models import Movie
 
 GEMINI_API_KEY = ""
 GEMINI_MODEL = "gemini-2.5-flash"
 GEMINI_URL = f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent"
-
 def call_bot(request):
     if request.method != "POST":
         return JsonResponse({"error": "Use o método POST."}, status=405)
@@ -39,7 +39,7 @@ def call_bot(request):
     return JsonResponse({"reply": reply})
 
 
-def home(request):
+def home2(request):
     response = requests.get("https://omdbapi.com/?apikey=38b4b85b&s=Batman&y=2022&type=movie")
     response_json = response.json()
     movies = response_json["Search"]
@@ -51,3 +51,10 @@ def home(request):
 
 def chat(request):
     return render(request, "chat.html")
+
+
+def home(request):
+    movies = Movie.objects.all()
+    return render(request, "home.html", {"movies": movies})
+
+

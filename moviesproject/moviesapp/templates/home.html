@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="header">
+        <svg style="color: white;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-film size-5 text-primary-foreground" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M7 3v18"></path><path d="M3 7.5h4"></path><path d="M3 12h18"></path><path d="M3 16.5h4"></path><path d="M17 3v18"></path><path d="M17 7.5h4"></path><path d="M17 16.5h4"></path></svg>
+        <span>Lumière</span>
+    </div>
+
+    <div class="catalog">
+        {% for movie in movies %}
+        <div class="card" style="width: 18rem;">
+            <img style="width: 100px;" src="{{ movie.image_url }}" alt="{{ movie.title }}" class="card-img-top">
+            <div>
+                <h5>{{ movie.title }}</h5>
+                <p>{{ movie.description }}</p>
+            </div>
+        </div>
+        {% empty %}
+        <p>No movies registered yet.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
